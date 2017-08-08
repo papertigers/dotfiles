@@ -19,7 +19,7 @@ set modeline                      " Allow per file config
 set tabstop=8
 
 " Theme
-set background=light
+set background=dark
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
