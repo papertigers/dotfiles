@@ -19,6 +19,11 @@ set modeline                      " Allow per file config
 set tabstop=8
 set t_Co=256			 " Support 256 color even if TERM is wrong
 
+" Tab remappings
+nnoremap tn :tabnew<Space>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+
 " Theme
 set background=dark
 
@@ -38,3 +43,4 @@ set updatetime=250
 "airline
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1 "display tabs nicely at the top
