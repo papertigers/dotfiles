@@ -1,3 +1,4 @@
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 set nocompatible                  " Must come first because it changes other options.
 
 "Pathogen
