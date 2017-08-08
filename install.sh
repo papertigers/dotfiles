@@ -60,11 +60,15 @@ fi
 
 # Mac OS X modifications
 if defaults read com.apple.finder &>/dev/null; then
-	echo 'modifying iTerm2 preference location'
+	if defaults read com.googlecode.iterm2 &>/dev/null; then
+		echo 'modifying iTerm2 preference location'
 
-	# Specify the preferences directory
-	defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$iterm2_profile"
-	# Tell iTerm2 to use the custom preferences in the directory
-	defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-	echo 'restart iTerm2 to pick up the new configuration'
+		# Specify the preferences directory
+		defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$iterm2_profile"
+		# Tell iTerm2 to use the custom preferences in the directory
+		defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+		echo; echo; echo
+		echo '---> restart iTerm2 to pick up the new configuration <---'
+		echo; echo
+	fi
 fi
