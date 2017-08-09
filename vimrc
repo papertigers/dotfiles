@@ -24,6 +24,9 @@ nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 
+" Open ctag in a new tab/buffer
+nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
 " Theme
 set background=dark
 
