@@ -19,16 +19,24 @@ set modeline                      " Allow per file config
 set tabstop=8
 set t_Co=256			 " Support 256 color even if TERM is wrong
 
+" Finding files
+set path+=** "search recursively
+set wildmenu "display all matching files when tab completing
+
 " Tab remappings
 nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 
+" ctags
+command MakeTags !ctags -R .
 " Open ctag in a new tab/buffer
 nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Theme
 set background=dark
+set encoding=utf8
+set fillchars=""
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
