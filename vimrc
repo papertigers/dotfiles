@@ -29,7 +29,12 @@ nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 
 " ctags
-command MakeTags !ctags -R .
+if executable("ctags")
+	command MakeTags !ctags -R .
+else
+	command MakeTags !exctags -R .
+endif
+
 " Open ctag in a new tab/buffer
 nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
