@@ -22,3 +22,6 @@
 [submodule "vim/bundle/vim-lengthmatters"]
 	path = vim/bundle/vim-lengthmatters
 	url = git@github.com:whatyouhide/vim-lengthmatters.git
+[submodule "vim/bundle/tmuxline.vim"]
+	path = vim/bundle/tmuxline.vim
+	url = git@github.com:edkolev/tmuxline.vim.git

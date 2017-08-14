@@ -28,7 +28,7 @@ git submodule init
 git submodule update
 
 # Link dotfiles
-for f in vimrc vim; do
+for f in vimrc vim tmux.conf tmuxline.conf; do
 	[[ -d ~/.$f ]] && rm -r ~/."$f"
 	symlink "$PWD/$f" ~/."$f"
 done
