@@ -18,6 +18,7 @@ set wrap                          " Turn on line wrapping.
 set modeline                      " Allow per file config
 set tabstop=8
 set t_Co=256			 " Support 256 color even if TERM is wrong
+set autoindent
 
 " Finding files
 set path+=** "search recursively
