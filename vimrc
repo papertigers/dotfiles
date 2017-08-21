@@ -49,6 +49,12 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+"Better MD support
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
 "Hightlight long lines
 call lengthmatters#highlight('ctermbg=4 ctermfg=14')
 "highlight ColorColumn ctermbg=235 guibg=#2c2d27
