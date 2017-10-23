@@ -48,6 +48,9 @@ set fillchars=""
 " reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  " JavaScript files
+  autocmd BufNewFile,BufReadPre,FileReadPre   *.json,*.js setlocal filetype=javascript
+  autocmd FileType                            javascript  setlocal sw=4 sts=4 et
 endif
 
 "Better MD support
