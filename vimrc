@@ -74,3 +74,4 @@ set updatetime=250
 "airline
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1 "display tabs nicely at the top
+let g:airline_theme = "deus"
