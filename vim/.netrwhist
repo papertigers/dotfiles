@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/Users/Michael.Zeller/go/src/github.com/papertigers/hue/lib/bridge'
 let g:netrw_dirhist_2='/Users/Michael.Zeller/go/src/github.com/papertigers/mm-notifications/lib/client'
 let g:netrw_dirhist_3='/Users/Michael.Zeller/ansible/config'
 let g:netrw_dirhist_4='/Users/Michael.Zeller/tmp'
+let g:netrw_dirhist_5='/usr/home/link/.vim'

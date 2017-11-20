@@ -19,6 +19,7 @@ set modeline                      " Allow per file config
 set tabstop=8
 set t_Co=256			 " Support 256 color even if TERM is wrong
 set autoindent
+set splitright			  " vsplit opens on the right
 
 " Finding files
 set path+=** "search recursively
@@ -29,6 +30,9 @@ nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 
+" Aliases
+cmap w!! w !sudo tee > /dev/null %
+
 " ctags
 if executable("ctags")
 	command MakeTags !ctags -R .
@@ -38,6 +42,7 @@ endif
 
 " Open ctag in a new tab/buffer
 nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Theme
 set background=dark
@@ -50,7 +55,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   " JavaScript files
   autocmd BufNewFile,BufReadPre,FileReadPre   *.json,*.js setlocal filetype=javascript
-  autocmd FileType                            javascript  setlocal sw=4 sts=4 et
+  autocmd FileType                            javascript,json  setlocal sw=4 sts=4 et
 endif
 
 "Better MD support
@@ -74,4 +79,5 @@ set updatetime=250
 "airline
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1 "display tabs nicely at the top
+"let g:airline_powerline_fonts = 1
 let g:airline_theme = "deus"
