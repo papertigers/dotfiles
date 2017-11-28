@@ -74,10 +74,13 @@ highlight RedundantWhitespace ctermbg=green guibg=green
 match RedundantWhitespace /\s\+$\| \+\ze\t/
 
 " ====== Plugins ======
-"Gutter
+" Gutter
 set updatetime=250
-"airline
+" airline
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1 "display tabs nicely at the top
 "let g:airline_powerline_fonts = 1
 let g:airline_theme = "deus"
+" go-vim
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
