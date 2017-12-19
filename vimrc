@@ -84,3 +84,5 @@ let g:airline_theme = "deus"
 " go-vim
 let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
+" indentLIne
+" let g:indentLine_char = 'c'
