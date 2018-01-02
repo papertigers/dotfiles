@@ -20,6 +20,7 @@ set tabstop=8
 set t_Co=256			 " Support 256 color even if TERM is wrong
 set autoindent
 set splitright			  " vsplit opens on the right
+set number			  " vsplit opens on the right
 
 " Finding files
 set path+=** "search recursively
