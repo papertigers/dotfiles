@@ -13,15 +13,9 @@
 [submodule "vim/bundle/vim-go"]
 	path = vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go.git
-[submodule "vim/bundle/promptline.vim"]
-	path = vim/bundle/promptline.vim
-	url = https://github.com/edkolev/promptline.vim.git
 [submodule "vim/bundle/vim-lengthmatters"]
 	path = vim/bundle/vim-lengthmatters
 	url = https://github.com/whatyouhide/vim-lengthmatters.git
-[submodule "vim/bundle/tmuxline.vim"]
-	path = vim/bundle/tmuxline.vim
-	url = https://github.com/edkolev/tmuxline.vim.git
 [submodule "vim/bundle/vim-flavored-markdown"]
 	path = vim/bundle/vim-flavored-markdown
 	url = git://github.com/jtratner/vim-flavored-markdown.git
