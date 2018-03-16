@@ -44,6 +44,7 @@ endif
 " Open ctag in a new tab/buffer
 nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <leader><C-]> :sp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Theme
 set background=dark
