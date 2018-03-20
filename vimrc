@@ -41,6 +41,11 @@ else
 	command MakeTags !exctags -R .
 endif
 
+" mdcat
+if executable("mdcat")
+	command Mdcat !mdcat -c yes % | less -r
+endif
+
 " Open ctag in a new tab/buffer
 nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
