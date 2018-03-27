@@ -22,3 +22,9 @@
 [submodule "vim/bundle/vim-airline-themes"]
 	path = vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "vim/optional/rust.vim"]
+	path = vim/optional/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule "vim/optional/vim-racer"]
+	path = vim/optional/vim-racer
+	url = https://github.com/racer-rust/vim-racer.git

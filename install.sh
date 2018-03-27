@@ -11,6 +11,15 @@
 
 iterm2_profile="$PWD/osx/iTerm2"
 font_dir="$HOME/.local/share/fonts"
+rust_support=false
+
+while true; do
+  case "$1" in
+    -r | --with-rust-support ) rust_support=true; shift ;;
+    -- ) shift; break ;;
+    * ) break ;;
+  esac
+done
 
 # makes "defaults" command print to screen
 defaults() {
@@ -26,6 +35,10 @@ symlink() {
 
 git submodule init
 git submodule update
+if $rust_support; then
+	symlink "$PWD/vim/optional/rust.vim" "$PWD/vim/bundle/rust.vim"
+	symlink "$PWD/vim/optional/vim-racer" "$PWD/vim/bundle/vim-racer"
+fi
 
 # Link dotfiles
 for f in vimrc vim tmux.conf tmuxline.conf; do

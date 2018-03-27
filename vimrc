@@ -71,6 +71,13 @@ augroup markdown
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
+augroup rust
+    au FileType rust nmap gd <Plug>(rust-def)
+    au FileType rust nmap gs <Plug>(rust-def-split)
+    au FileType rust nmap gx <Plug>(rust-def-vertical)
+    au FileType rust nmap <leader>gd <Plug>(rust-doc)
+augroup end
+
 "Hightlight long lines
 call lengthmatters#highlight('ctermbg=4 ctermfg=14')
 "highlight ColorColumn ctermbg=235 guibg=#2c2d27
@@ -91,5 +98,5 @@ let g:airline_theme = "deus"
 " go-vim
 let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
-" indentLIne
-" let g:indentLine_char = 'c'
+" rust racer
+let g:racer_cmd ='~/.cargo/bin/racer'
