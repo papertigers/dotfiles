@@ -11,10 +11,12 @@
 
 iterm2_profile="$PWD/osx/iTerm2"
 font_dir="$HOME/.local/share/fonts"
+go_support=false
 rust_support=false
 
 while true; do
   case "$1" in
+    -g | --with-go-support ) go_support=true; shift ;;
     -r | --with-rust-support ) rust_support=true; shift ;;
     -- ) shift; break ;;
     * ) break ;;
@@ -35,6 +37,9 @@ symlink() {
 
 git submodule init
 git submodule update
+if $go_support; then
+	symlink "$PWD/vim/optional/vim-go" "$PWD/vim/bundle/vim-go"
+fi
 if $rust_support; then
 	symlink "$PWD/vim/optional/rust.vim" "$PWD/vim/bundle/rust.vim"
 	symlink "$PWD/vim/optional/vim-racer" "$PWD/vim/bundle/vim-racer"

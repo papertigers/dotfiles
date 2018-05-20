@@ -10,9 +10,6 @@
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/bundle/vim-go"]
-	path = vim/bundle/vim-go
-	url = https://github.com/fatih/vim-go.git
 [submodule "vim/bundle/vim-lengthmatters"]
 	path = vim/bundle/vim-lengthmatters
 	url = https://github.com/whatyouhide/vim-lengthmatters.git
@@ -28,3 +25,6 @@
 [submodule "vim/optional/vim-racer"]
 	path = vim/optional/vim-racer
 	url = https://github.com/racer-rust/vim-racer.git
+[submodule "vim/optional/vim-go"]
+	path = vim/optional/vim-go
+	url = https://github.com/fatih/vim-go.git
