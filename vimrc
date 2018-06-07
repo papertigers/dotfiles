@@ -51,6 +51,14 @@ nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <leader><C-]> :sp <CR>:exec("tag ".expand("<cword>"))<CR>
 
+" Folding
+set foldmethod=syntax
+"set foldcolumn=1
+let javaScript_fold=1
+set foldlevelstart=99
+hi Folded ctermbg=Black
+hi Folded ctermfg=White
+
 " Theme
 set background=dark
 set encoding=utf8
