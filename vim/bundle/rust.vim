@@ -1,0 +1,1 @@
+/home/link/src/dotfiles/vim/optional/rust.vim
