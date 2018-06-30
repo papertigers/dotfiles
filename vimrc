@@ -21,6 +21,7 @@ set t_Co=256			 " Support 256 color even if TERM is wrong
 set autoindent
 set splitright			  " vsplit opens on the right
 set number			  " vsplit opens on the right
+set completeopt-=preview	  " Hide preivew window for things like racer
 
 " Finding files
 set path+=** "search recursively
@@ -108,5 +109,7 @@ let g:airline#extensions#whitespace#enabled = 0 "disable annoying whitespace plu
 " go-vim
 let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
-" rust racer
+" rust
+let g:rustfmt_autosave = 1
 let g:racer_cmd ='~/.cargo/bin/racer'
+let g:racer_experimental_completer = 1
