@@ -43,6 +43,8 @@ fi
 if $rust_support; then
 	symlink "$PWD/vim/optional/rust.vim" "$PWD/vim/bundle/rust.vim"
 	symlink "$PWD/vim/optional/vim-racer" "$PWD/vim/bundle/vim-racer"
+	touch ~/.vim/rust-support # Tell vim to load LanguageClient + rls
+	(cd ~/.vim/LanguageClient-neovim/ && ./install.sh)
 fi
 
 # Link dotfiles
@@ -50,6 +52,7 @@ for f in vimrc vim tmux.conf tmuxline.conf; do
 	[[ -d ~/.$f ]] && rm -r ~/."$f"
 	symlink "$PWD/$f" ~/."$f"
 done
+
 
 # Mac OS X specific
 if [[ $(uname) == 'Darwin' ]]; then

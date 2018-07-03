@@ -1,4 +1,9 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+if !empty(glob("~/.vim/rust-support"))
+	set runtimepath+=~/.vim/LanguageClient-neovim
+endif
+
 set nocompatible                  " Must come first because it changes other options.
 
 "Pathogen
@@ -113,3 +118,7 @@ let g:go_highlight_functions = 1
 let g:rustfmt_autosave = 1
 let g:racer_cmd ='~/.cargo/bin/racer'
 let g:racer_experimental_completer = 1
+
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'] }

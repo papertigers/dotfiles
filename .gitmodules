@@ -28,3 +28,6 @@
 [submodule "vim/optional/vim-go"]
 	path = vim/optional/vim-go
 	url = https://github.com/fatih/vim-go.git
+[submodule "vim/LanguageClient-neovim"]
+	path = vim/LanguageClient-neovim
+	url = https://github.com/autozimu/LanguageClient-neovim.git
