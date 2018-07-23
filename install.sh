@@ -47,12 +47,18 @@ if $rust_support; then
 	(cd ~/.vim/LanguageClient-neovim/ && ./install.sh)
 fi
 
+mkdir -p ~/.config
+
 # Link dotfiles
 for f in vimrc vim tmux.conf tmuxline.conf; do
 	[[ -d ~/.$f ]] && rm -r ~/."$f"
 	symlink "$PWD/$f" ~/."$f"
 done
 
+if nvim -v &> /dev/null; then
+	symlink "$PWD/vim" ~/.config/nvim
+	symlink "$PWD/vimrc" ~/.config/nvim/init.vim
+fi
 
 # Mac OS X specific
 if [[ $(uname) == 'Darwin' ]]; then

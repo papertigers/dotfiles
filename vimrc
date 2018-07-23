@@ -1,7 +1,9 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 
-if !empty(glob("~/.vim/rust-support"))
-	set runtimepath+=~/.vim/LanguageClient-neovim
+if has("nvim")
+	if !empty(glob("~/.vim/rust-support"))
+		set runtimepath+=~/.vim/LanguageClient-neovim
+	endif
 endif
 
 set nocompatible                  " Must come first because it changes other options.
@@ -90,7 +92,7 @@ augroup rust
     au FileType rust nmap gs <Plug>(rust-def-split)
     au FileType rust nmap gx <Plug>(rust-def-vertical)
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
-augroup end
+augroup END
 
 "Hightlight long lines
 call lengthmatters#highlight('ctermbg=4 ctermfg=14')
