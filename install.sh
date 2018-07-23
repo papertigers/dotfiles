@@ -37,6 +37,14 @@ symlink() {
 
 git submodule init
 git submodule update
+mkdir -p ~/.config
+
+# Link dotfiles
+for f in vimrc vim tmux.conf tmuxline.conf; do
+	[[ -d ~/.$f && ! -L ~/.$f ]] && rm -r ~/."$f"
+	symlink "$PWD/$f" ~/."$f"
+done
+
 if $go_support; then
 	symlink "$PWD/vim/optional/vim-go" "$PWD/vim/bundle/vim-go"
 fi
@@ -46,14 +54,6 @@ if $rust_support; then
 	touch ~/.vim/rust-support # Tell vim to load LanguageClient + rls
 	(cd ~/.vim/LanguageClient-neovim/ && ./install.sh)
 fi
-
-mkdir -p ~/.config
-
-# Link dotfiles
-for f in vimrc vim tmux.conf tmuxline.conf; do
-	[[ -d ~/.$f ]] && rm -r ~/."$f"
-	symlink "$PWD/$f" ~/."$f"
-done
 
 if nvim -v &> /dev/null; then
 	symlink "$PWD/vim" ~/.config/nvim
