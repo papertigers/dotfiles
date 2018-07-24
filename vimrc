@@ -1,6 +1,7 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 
 if has("nvim")
+	set guicursor= "Don't use | in insert mode
 	if !empty(glob("~/.vim/rust-support"))
 		set runtimepath+=~/.vim/LanguageClient-neovim
 	endif
