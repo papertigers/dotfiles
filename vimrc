@@ -25,11 +25,24 @@ set hlsearch                      " Highlight matches.
 set wrap                          " Turn on line wrapping.
 set modeline                      " Allow per file config
 set tabstop=8
-set t_Co=256			 " Support 256 color even if TERM is wrong
+set t_Co=256			  " Support 256 color even if TERM is wrong
 set autoindent
 set splitright			  " vsplit opens on the right
 set number			  " vsplit opens on the right
-set completeopt-=preview	  " Hide preivew window for things like racer
+set completeopt-=preview	  " Hide preview window for things like racer
+set spell spelllang=en_us	  " Spell checking
+
+" Copy to system clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" Paste from system clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
 
 " Finding files
 set path+=** "search recursively
@@ -52,7 +65,7 @@ endif
 
 " mdcat
 if executable("mdcat")
-	command Mdcat !mdcat -c yes % | less -r
+	command Mdcat !mdcat -c yes % | less -R
 endif
 
 " Open ctag in a new tab/buffer
@@ -95,12 +108,10 @@ augroup rust
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
 augroup END
 
-"Hightlight long lines
+"Highlight long lines
 call lengthmatters#highlight('ctermbg=4 ctermfg=14')
-"highlight ColorColumn ctermbg=235 guibg=#2c2d27
-"let &colorcolumn=join(range(81,999),",")
 
-"Hightlight whitespace
+"Highlight whitespace
 highlight RedundantWhitespace ctermbg=green guibg=green
 match RedundantWhitespace /\s\+$\| \+\ze\t/
 
