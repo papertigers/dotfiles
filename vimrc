@@ -1,12 +1,5 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 
-if has("nvim")
-	set guicursor= "Don't use | in insert mode
-	if !empty(glob("~/.vim/rust-support"))
-		set runtimepath+=~/.vim/LanguageClient-neovim
-	endif
-endif
-
 set nocompatible                  " Must come first because it changes other options.
 
 "Pathogen
@@ -30,7 +23,13 @@ set autoindent
 set splitright			  " vsplit opens on the right
 set number			  " vsplit opens on the right
 set completeopt-=preview	  " Hide preview window for things like racer
-set spell spelllang=en_us	  " Spell checking
+
+if has("nvim")
+	set guicursor= "Don't use | in insert mode
+	if !empty(glob("~/.vim/rust-support"))
+		set runtimepath+=~/.vim/LanguageClient-neovim
+	endif
+endif
 
 " Copy to system clipboard
 vnoremap  <leader>y  "+y
@@ -98,7 +97,7 @@ endif
 "Better MD support
 augroup markdown
     au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown spell spelllang=en_us
 augroup END
 
 augroup rust
