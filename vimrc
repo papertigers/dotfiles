@@ -31,6 +31,10 @@ if has("nvim")
 	endif
 endif
 
+if !empty(glob("~/.vim/rust-support"))
+	set runtimepath+=~/.vim/LanguageClient-neovim
+endif
+
 " Copy to system clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
