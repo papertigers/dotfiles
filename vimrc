@@ -68,7 +68,7 @@ endif
 
 " mdcat
 if executable("mdcat")
-	command Mdcat !mdcat -c yes % | less -R
+	command Mdcat !mdcat % | less -R
 endif
 
 " Open ctag in a new tab/buffer
@@ -109,6 +109,7 @@ augroup rust
     au FileType rust nmap gs <Plug>(rust-def-split)
     au FileType rust nmap gx <Plug>(rust-def-vertical)
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
+    au FileType rust nmap <F8> :TagbarToggle<CR>
 augroup END
 
 "Highlight long lines
