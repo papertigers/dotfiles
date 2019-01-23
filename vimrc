@@ -24,6 +24,8 @@ set splitright			  " vsplit opens on the right
 set number			  " vsplit opens on the right
 set completeopt-=preview	  " Hide preview window for things like racer
 
+colorscheme monokai-papertigers
+
 if has("nvim")
 	set guicursor= "Don't use | in insert mode
 	if !empty(glob("~/.vim/rust-support"))
