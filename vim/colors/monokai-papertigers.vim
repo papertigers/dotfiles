@@ -362,6 +362,7 @@ call Highlight("rustRepeat", s:indian_red1, s:none, s:none)
 call Highlight("rustAttribute", s:white, s:none, s:none)
 call Highlight("rustDerive", s:white, s:none, s:none)
 call Highlight("rustSelf", s:orange, s:none, s:none)
+call Highlight("rustStructure", s:light_blue, s:none, s:none)
 
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ

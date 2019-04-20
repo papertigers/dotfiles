@@ -31,3 +31,18 @@
 [submodule "vim/LanguageClient-neovim"]
 	path = vim/LanguageClient-neovim
 	url = https://github.com/autozimu/LanguageClient-neovim.git
+[submodule "vim/bundle/webapi-vim"]
+	path = vim/bundle/webapi-vim
+	url = https://github.com/mattn/webapi-vim.git
+[submodule "vim/bundle/vim-lsp"]
+	path = vim/bundle/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git
+[submodule "vim/bundle/asyncomplete.vim"]
+	path = vim/bundle/asyncomplete.vim
+	url = https://github.com/prabirshrestha/asyncomplete.vim.git
+[submodule "vim/bundle/asyncomplete-lsp.vim"]
+	path = vim/bundle/asyncomplete-lsp.vim
+	url = https://github.com/prabirshrestha/asyncomplete-lsp.vim.git
+[submodule "vim/bundle/async.vim"]
+	path = vim/bundle/async.vim
+	url = https://github.com/prabirshrestha/async.vim.git

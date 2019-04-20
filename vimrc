@@ -33,10 +33,6 @@ if has("nvim")
 	endif
 endif
 
-if !empty(glob("~/.vim/rust-support"))
-	set runtimepath+=~/.vim/LanguageClient-neovim
-endif
-
 " Copy to system clipboard
 vnoremap  <leader>y  "+y
 nnoremap  <leader>Y  "+yg_
@@ -107,7 +103,10 @@ augroup markdown
 augroup END
 
 augroup rust
-    au FileType rust nmap gd <Plug>(rust-def)
+    "au FileType rust nmap gd <Plug>(rust-def)
+    au FileType rust nmap gd :LspDefinition<CR>
+    au FileType rust nmap gh :LspHover<CR>
+    au FileType rust nmap gR :LspRename<CR>
     au FileType rust nmap gs <Plug>(rust-def-split)
     au FileType rust nmap gx <Plug>(rust-def-vertical)
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
@@ -134,11 +133,21 @@ let g:airline#extensions#whitespace#enabled = 0 "disable annoying whitespace plu
 " go-vim
 let g:go_highlight_types = 1
 let g:go_highlight_functions = 1
+
 " rust
 let g:rustfmt_autosave = 1
-let g:racer_cmd ='~/.cargo/bin/racer'
-let g:racer_experimental_completer = 1
+if executable('rls')
+    let g:lsp_signs_enabled = 1         " enable signs
+    let g:lsp_signs_error = {'text': '✗'}
+    let g:lsp_signs_warning = {'text': '‼'}
+    let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'] }
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
