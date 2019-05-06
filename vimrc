@@ -106,6 +106,7 @@ augroup rust
     "au FileType rust nmap gd <Plug>(rust-def)
     au FileType rust nmap gd :LspDefinition<CR>
     au FileType rust nmap gh :LspHover<CR>
+    au FileType rust nmap gH <C-w>o<CR>
     au FileType rust nmap gR :LspRename<CR>
     au FileType rust nmap gs <Plug>(rust-def-split)
     au FileType rust nmap gx <Plug>(rust-def-vertical)
