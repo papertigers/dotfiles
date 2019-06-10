@@ -51,8 +51,6 @@ fi
 if $rust_support; then
 	symlink "$PWD/vim/optional/rust.vim" "$PWD/vim/bundle/rust.vim"
 	symlink "$PWD/vim/optional/vim-racer" "$PWD/vim/bundle/vim-racer"
-	touch ~/.vim/rust-support # Tell vim to load LanguageClient + rls
-	(cd ~/.vim/LanguageClient-neovim/ && ./install.sh)
 fi
 
 if nvim -v &> /dev/null; then
