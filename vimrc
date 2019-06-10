@@ -16,7 +16,8 @@ set wildmode=list:longest         " Complete files like a shell.
 set incsearch                     " Highlight matches as you type.
 set hlsearch                      " Highlight matches.
 set wrap                          " Turn on line wrapping.
-set modeline                      " Allow per file config
+set nomodeline                    " CVE-2019-12735
+set modelines=0
 set tabstop=8
 set t_Co=256			  " Support 256 color even if TERM is wrong
 set autoindent
