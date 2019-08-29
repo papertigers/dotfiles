@@ -75,13 +75,28 @@ nnoremap <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nnoremap <leader><C-]> :sp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-" Folding
-set foldmethod=syntax
-"set foldcolumn=1
-let javaScript_fold=1
-set foldlevelstart=99
-hi Folded ctermbg=Black
-hi Folded ctermfg=White
+" Taken from https://github.com/pfmooney/dotfiles/blob/master/vim/vimrc
+" map space-bar to toggle folding
+noremap <space> za
+
+function! MyFoldText() " {{{
+	let line = getline(v:foldstart)
+
+	let nucolwidth = &fdc + &number * &numberwidth
+	let windowwidth = winwidth(0) - nucolwidth
+	let foldedlinecount = 1 + v:foldend - v:foldstart
+
+	" expand tabs into spaces
+	let onetab = strpart('          ', 0, &tabstop)
+	let line = substitute(line, '\t', onetab, 'g')
+
+	let linemsg = '…[' . foldedlinecount . ']'
+	let linelimit = (windowwidth  > 80) ? (80 - len(linemsg)) : (windowwidth - len(linemsg))
+	let line = strpart(line, 0, linelimit)
+	return line . repeat(' ', 80 - len(line) - len(linemsg)) . linemsg
+endfunction " }}}
+set foldtext=MyFoldText()
+
 
 " Theme
 set background=dark
@@ -114,6 +129,40 @@ augroup rust
     au FileType rust nmap <leader>gd <Plug>(rust-doc)
     au FileType rust nmap <F8> :TagbarToggle<CR>
 augroup END
+
+" Taken from https://github.com/pfmooney/dotfiles/blob/master/vim/vimrc
+augroup ft_c
+	au!
+
+	"colorscheme pmolokai
+
+	" Don't fold comments or '#if 0' blocks
+	let c_no_comment_fold = 1
+	let c_no_if0_fold = 1
+
+	au FileType c setlocal foldmethod=syntax
+	au FileType c setlocal list!
+	" shiftround messes with block comments and illumos continuation style
+	au FileType c setlocal noshiftround
+	au FileType c setlocal ts=8 sw=8 list
+	"au FileType c setlocal ts=8 sw=8
+
+augroup END
+
+
+" Character Listing
+set list
+set listchars=tab:\>\-
+set fillchars=fold:\ ,vert:\|
+
+
+augroup trailing
+	au!
+	au BufReadPre * :match ErrorMsg '\s\+$'
+	au InsertEnter * :highlight clear ErrorMsg
+	au InsertLeave * :highlight ErrorMsg term=reverse cterm=reverse ctermfg=124 guifg=White guibg=Red
+augroup END
+
 
 "Highlight long lines
 call lengthmatters#highlight('ctermbg=4 ctermfg=14')
