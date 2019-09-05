@@ -77,9 +77,9 @@ nnoremap <leader><C-]> :sp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Taken from https://github.com/pfmooney/dotfiles/blob/master/vim/vimrc
 " map space-bar to toggle folding
-noremap <space> za
+noremap <space> zA
 
-function! MyFoldText() " {{{
+function! MyFoldText()
 	let line = getline(v:foldstart)
 
 	let nucolwidth = &fdc + &number * &numberwidth
@@ -94,7 +94,7 @@ function! MyFoldText() " {{{
 	let linelimit = (windowwidth  > 80) ? (80 - len(linemsg)) : (windowwidth - len(linemsg))
 	let line = strpart(line, 0, linelimit)
 	return line . repeat(' ', 80 - len(line) - len(linemsg)) . linemsg
-endfunction " }}}
+endfunction
 set foldtext=MyFoldText()
 
 
