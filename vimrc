@@ -145,7 +145,7 @@ augroup ft_c
 	" shiftround messes with block comments and illumos continuation style
 	au FileType c setlocal noshiftround
 	au FileType c setlocal ts=8 sw=8 list
-	"au FileType c setlocal ts=8 sw=8
+	au FileType c setlocal nofoldenable
 
 augroup END
 
