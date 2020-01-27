@@ -77,11 +77,14 @@ fi
 # Install custom fonts for powerline
 mkdir -p "$font_dir"
 echo 'Copying fonts'
-cp "fonts/Inconsolata-g for Powerline.otf" "$font_dir"
+for f in fonts/*; do
+	cp "$f" "$font_dir"
+done
 if command -v fc-cache @>/dev/null ; then
     echo "Resetting font cache, this may take a moment..."
     fc-cache -f $font_dir
 fi
+
 
 # Mac OS X modifications
 if defaults read com.apple.finder &>/dev/null; then
