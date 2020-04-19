@@ -185,6 +185,7 @@ endif
 
 " vim-lsp has annoying behavior in files it shouldn't care about
 let g:lsp_auto_enable = 0
+let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
 let g:lsp_signs_error = {'text': '✗'}
 let g:lsp_signs_warning = {'text': '!'}
 
