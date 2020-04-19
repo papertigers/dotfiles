@@ -118,18 +118,6 @@ augroup markdown
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown spell spelllang=en_us
 augroup END
 
-augroup rust
-    "au FileType rust nmap gd <Plug>(rust-def)
-    au FileType rust nmap gd :LspDefinition<CR>
-    au FileType rust nmap gh :LspHover<CR>
-    au FileType rust nmap gH <C-w>o<CR>
-    au FileType rust nmap gR :LspRename<CR>
-    au FileType rust nmap gs <Plug>(rust-def-split)
-    au FileType rust nmap gx <Plug>(rust-def-vertical)
-    au FileType rust nmap <leader>gd <Plug>(rust-doc)
-    au FileType rust nmap <F8> :TagbarToggle<CR>
-augroup END
-
 " Taken from https://github.com/pfmooney/dotfiles/blob/master/vim/vimrc
 augroup ft_c
 	au!
@@ -146,7 +134,6 @@ augroup ft_c
 	au FileType c setlocal noshiftround
 	au FileType c setlocal ts=8 sw=8 list
 	au FileType c setlocal nofoldenable
-
 augroup END
 
 
@@ -187,18 +174,46 @@ let g:go_highlight_functions = 1
 
 " rust
 let g:rustfmt_autosave = 1
-if executable('rls')
-    let g:lsp_signs_enabled = 1         " enable signs
-    let g:lsp_signs_error = {'text': '✗'}
-    let g:lsp_signs_warning = {'text': '‼'}
-    let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
 
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rls']},
-        \ 'whitelist': ['rust'],
-        \ })
+if exepath(expand('~/.cargo/bin/ra_lsp_server')) != ""
+	au User lsp_setup call lsp#register_server({
+			\ 'name': 'rust-analyzer',
+			\ 'cmd': {server_info->[expand('~/.cargo/bin/ra_lsp_server')]},
+			\ 'whitelist': ['rust'],
+			\ })
 endif
+
+" vim-lsp has annoying behavior in files it shouldn't care about
+let g:lsp_auto_enable = 0
+let g:lsp_signs_error = {'text': '✗'}
+let g:lsp_signs_warning = {'text': '!'}
+
+function! s:on_lsp_buffer_enabled() abort
+	setlocal omnifunc=lsp#complete
+	setlocal signcolumn=auto
+	inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+endfunction
+
+augroup lsp_install
+	au!
+	" call s:on_lsp_buffer_enabled only for languages that has the server registered.
+	autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+" rust {{{
+augroup ft_rust
+	au!
+
+	au Filetype rust call lsp#enable()
+	au FileType rust nmap gd :LspDefinition<CR>
+	au FileType rust nmap gh :LspHover<CR>
+	au FileType rust nmap gH <C-w>o<CR>
+	au FileType rust nmap gR :LspRename<CR>
+	au FileType rust nmap gs <Plug>(rust-def-split)
+	au FileType rust nmap gx <Plug>(rust-def-vertical)
+	au FileType rust nmap <leader>gd <Plug>(rust-doc)
+	au FileType rust nmap <F8> :TagbarToggle<CR>
+augroup END
+" }}}
