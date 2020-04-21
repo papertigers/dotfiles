@@ -175,10 +175,11 @@ let g:go_highlight_functions = 1
 " rust
 let g:rustfmt_autosave = 1
 
-if exepath(expand('~/.cargo/bin/ra_lsp_server')) != ""
+"if exepath(expand('~/.cargo/bin/ra_lsp_server')) != ""
+if exepath(expand('~/.cargo/bin/rust-analyzer')) != ""
 	au User lsp_setup call lsp#register_server({
 			\ 'name': 'rust-analyzer',
-			\ 'cmd': {server_info->[expand('~/.cargo/bin/ra_lsp_server')]},
+			\ 'cmd': {server_info->[expand('~/.cargo/bin/rust-analyzer')]},
 			\ 'whitelist': ['rust'],
 			\ })
 endif
