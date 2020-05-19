@@ -58,13 +58,6 @@ nnoremap tj :tabprev<CR>
 " Aliases
 cmap w!! w !sudo tee > /dev/null %
 
-" ctags
-if executable("ctags")
-	command MakeTags !ctags -R .
-else
-	command MakeTags !exctags -R .
-endif
-
 " mdcat
 if executable("mdcat")
 	command Mdcat !mdcat % | less -R
