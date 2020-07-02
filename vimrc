@@ -60,7 +60,7 @@ cmap w!! w !sudo tee > /dev/null %
 
 " mdcat
 if executable("mdcat")
-	command Mdcat !mdcat % | less -R
+	command Mdcat :silent w !mdcat - | less -R
 endif
 
 " Open ctag in a new tab/buffer
