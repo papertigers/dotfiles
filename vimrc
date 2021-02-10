@@ -168,11 +168,12 @@ let g:go_highlight_functions = 1
 " rust
 let g:rustfmt_autosave = 1
 
-"if exepath(expand('~/.cargo/bin/ra_lsp_server')) != ""
-if exepath(expand('~/.cargo/bin/rust-analyzer')) != ""
+let ra_cmd = exepath('rustup')
+if ra_cmd != ""
+	let ra_cmd = [ra_cmd, "run", "nightly", "rust-analyzer"]
 	au User lsp_setup call lsp#register_server({
 			\ 'name': 'rust-analyzer',
-			\ 'cmd': {server_info->[expand('~/.cargo/bin/rust-analyzer')]},
+			\ 'cmd': ra_cmd,
 			\ 'whitelist': ['rust'],
 			\ })
 endif
@@ -209,6 +210,9 @@ augroup ft_rust
 	au FileType rust nmap gs <Plug>(rust-def-split)
 	au FileType rust nmap gx <Plug>(rust-def-vertical)
 	au FileType rust nmap <leader>gd <Plug>(rust-doc)
+	au FileType rust nmap <buffer> gi <plug>(lsp-implementation)
+	au FileType rust nmap <buffer> gr <plug>(lsp-references)
+	au FileType rust nmap <buffer> gt <plug>(lsp-type-definition)
 	au FileType rust nmap <F8> :TagbarToggle<CR>
 augroup END
 " }}}
